@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+int func()
+{
+    int f,x;
+    scanf("%d%d",&f,&x);
+    int a[f];
+    for(int j=0;j<f;j++)
+    {
+        scanf("%d",&a[j]);
+    }
+    int max=-1;
+    //sort the elements from index 0 to x in descending order
+    for(int i=0;i<x-1;i++)
+    {
+        for(int k=i+1;k<x;k++)
+        {
+            if(a[k]>a[i])
+            {
+                int temp=a[k];a[k]=a[i];a[i]=temp;
+            }
+        }
+    }
+    int temp,ans=0;
+    for(int i=0;i<x;i++)
+    {
+        temp=a[i];
+        for(int k=x;k<f;k++)
+        {
+            if(a[k]<a[i])
+            {
+                int temp=a[k];a[k]=a[i];a[i]=temp;
+            }
+        }
+          if(a[i]!=temp)
+                ans++;
+    }
+    
+    return ans;
+}
+
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int arr[n];
+    for(int i=0;i<n;i++)
+        arr[i]=func();
+        
+    for(int i=0;i<n;i++)
+        printf("%d\n",arr[i]);
+
+    return 0;
+}
