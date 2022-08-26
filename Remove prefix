@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int func()
+{
+    int f;
+    scanf("%d",&f);
+    int a[f],b[f];
+    for(int x=0;x<f;x++)
+        b[x]=0;
+    for(int j=0;j<f;j++)
+    {
+        scanf("%d",&a[j]);
+    }
+    
+    for(int k=f-1;k>=0;k--)
+    {
+        if(b[a[k]-1]==0)
+            b[a[k]-1]++;
+        else
+            return k+1;
+    }
+    
+    return 0;
+}
+
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    int arr[n];
+    for(int i=0;i<n;i++)
+        arr[i]=func();
+        
+    for(int i=0;i<n;i++)
+        printf("%d\n",arr[i]);
+
+    return 0;
+}
